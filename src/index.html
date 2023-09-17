@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script type="module" src="./dashboard.js"></script>
+  </head>
+  <body>
+    <navbar-component></navbar-component>
+    <template id="person-card">
+      <div class="person-card relative group/card">
+        <div
+          class="card bg-slate-200/25 hover:bg-white p-4 rounded-lg border-2 hover:border-slate-400 transition-all"
+        >
+          <h3 class="font-medium text-xl text-black" id="person-name">
+            Neel Kumar
+          </h3>
+          <p class="text-gray-500">
+            Checked in at
+            <span class="font-bold" id="checkin-time">7:30 PM</span>
+          </p>
+        </div>
+
+        <button
+          id="deleteButton"
+          class="hidden group-hover/card:block absolute group/button top-[-15px] right-[-15px] rounded-full bg-slate-500 transition-all font-thin text-4xl px-2 aspect-square text-white border-2 border-slate-500 hover:border-transparent"
+        >
+          <svg
+            class="w-3 aspect-square group-hover/button:w-4 transition-all fill-white"
+            version="1.1"
+            id="Capa_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 460.775 460.775"
+            xml:space="preserve"
+          >
+            <path
+              d="M285.08,230.397L456.218,59.27c6.076-6.077,6.076-15.911,0-21.986L423.511,4.565c-2.913-2.911-6.866-4.55-10.992-4.55
+              c-4.127,0-8.08,1.639-10.993,4.55l-171.138,171.14L59.25,4.565c-2.913-2.911-6.866-4.55-10.993-4.55
+              c-4.126,0-8.08,1.639-10.992,4.55L4.558,37.284c-6.077,6.075-6.077,15.909,0,21.986l171.138,171.128L4.575,401.505
+              c-6.074,6.077-6.074,15.911,0,21.986l32.709,32.719c2.911,2.911,6.865,4.55,10.992,4.55c4.127,0,8.08-1.639,10.994-4.55
+              l171.117-171.12l171.118,171.12c2.913,2.911,6.866,4.55,10.993,4.55c4.128,0,8.081-1.639,10.992-4.55l32.709-32.719
+              c6.074-6.075,6.074-15.909,0-21.986L285.08,230.397z"
+            />
+          </svg>
+        </button>
+      </div>
+    </template>
+    <!-- <div class="fixed bottom-0 right-0 m-6">
+      <a
+        href="/dashboard/form/"
+        class="rounded-full hover:bg-slate-500 bg-transparent transition-all font-thin text-4xl px-4 pb-2 leading-none aspect-square text-slate-500 hover:text-white border-2 border-slate-500 hover:border-transparent"
+        >+</a
+      >
+    </div> -->
+    <h1 class="text-4xl font-bold my-6 text-center w-screen">In the Office</h1>
+    <div
+      class="grid grid-flow-col auto-cols-auto min-w-screen h-screen px-5 gap-x-5"
+    >
+      <div
+        class="col-span-1 flex flex-col gap-y-4 min-w-[300px] w-full"
+        id="stratton"
+      >
+        <h2 class="text-3xl font-semibold text-center w-full mb-4">
+          Mr. Stratton
+        </h2>
+        <!-- <div class="relative group/card">
+
+          <div class="card bg-slate-200/25 hover:bg-white p-4 rounded-lg border-2 hover:border-slate-400 transition-all">
+            <h3 class="font-medium text-xl text-black">Neel Kumar</h3> 
+            <p class="text-gray-500">Checked in at <span class="font-bold">7:30 PM</span></p>
+          </div>
+        
+          <button class="hidden group-hover/card:block absolute group/button top-[-15px] right-[-15px] rounded-full bg-slate-500 transition-all font-thin text-4xl px-2 aspect-square text-white border-2 border-slate-500 hover:border-transparent">
+            <svg class="w-3 aspect-square group-hover/button:w-4 transition-all fill-white" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                viewBox="0 0 460.775 460.775" xml:space="preserve">
+              <path d="M285.08,230.397L456.218,59.27c6.076-6.077,6.076-15.911,0-21.986L423.511,4.565c-2.913-2.911-6.866-4.55-10.992-4.55
+                c-4.127,0-8.08,1.639-10.993,4.55l-171.138,171.14L59.25,4.565c-2.913-2.911-6.866-4.55-10.993-4.55
+                c-4.126,0-8.08,1.639-10.992,4.55L4.558,37.284c-6.077,6.075-6.077,15.909,0,21.986l171.138,171.128L4.575,401.505
+                c-6.074,6.077-6.074,15.911,0,21.986l32.709,32.719c2.911,2.911,6.865,4.55,10.992,4.55c4.127,0,8.08-1.639,10.994-4.55
+                l171.117-171.12l171.118,171.12c2.913,2.911,6.866,4.55,10.993,4.55c4.128,0,8.081-1.639,10.992-4.55l32.709-32.719
+                c6.074-6.075,6.074-15.909,0-21.986L285.08,230.397z"/>
+              </svg>
+          </button>
+        
+        </div> -->
+        <div
+          class="card p-4 rounded-lg border-4 border-dashed border-slate-200 flex justify-center items-center place-items-center"
+        >
+          <a
+            href="/form/?counselor=stratton"
+            class="rounded-full hover:bg-slate-500 bg-transparent transition-all font-thin text-4xl px-2 leading-7 aspect-square text-slate-500 hover:text-white border-2 border-slate-500 hover:border-transparent"
+            >+</a
+          >
+        </div>
+      </div>
+      <div
+        class="col-span-1 flex flex-col gap-y-4 min-w-[300px] w-full"
+        id="wallin"
+      >
+        <h2 class="text-3xl font-semibold text-center w-full mb-4">
+          Mrs. Wallin
+        </h2>
+        <div
+          class="card p-4 rounded-lg border-4 border-dashed border-slate-200 flex justify-center items-center place-items-center"
+        >
+          <a
+            href="/form/?counselor=wallin"
+            class="rounded-full hover:bg-slate-500 bg-transparent transition-all font-thin text-4xl px-2 leading-7 aspect-square text-slate-500 hover:text-white border-2 border-slate-500 hover:border-transparent"
+            >+</a
+          >
+        </div>
+      </div>
+      <div
+        class="col-span-1 flex flex-col gap-y-4 min-w-[300px] w-full"
+        id="hewitt"
+      >
+        <h2 class="text-3xl font-semibold text-center w-full mb-4">
+          Mrs. Hewitt
+        </h2>
+        <div
+          class="card p-4 rounded-lg border-4 border-dashed border-slate-200 flex justify-center items-center place-items-center"
+        >
+          <a
+            href="/form/?counselor=hewitt"
+            class="rounded-full hover:bg-slate-500 bg-transparent transition-all font-thin text-4xl px-2 leading-7 aspect-square text-slate-500 hover:text-white border-2 border-slate-500 hover:border-transparent"
+            >+</a
+          >
+        </div>
+      </div>
+      <div
+        class="col-span-1 flex flex-col gap-y-4 min-w-[300px] w-full"
+        id="glowik"
+      >
+        <h2 class="text-3xl font-semibold text-center w-full mb-4">
+          Mrs. Glowik
+        </h2>
+        <div
+          class="card p-4 rounded-lg border-4 border-dashed border-slate-200 flex justify-center items-center place-items-center"
+        >
+          <a
+            href="/form/?counselor=glowik"
+            class="rounded-full hover:bg-slate-500 bg-transparent transition-all font-thin text-4xl px-2 leading-7 aspect-square text-slate-500 hover:text-white border-2 border-slate-500 hover:border-transparent"
+            >+</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/components.js"></script>
+    <script type="module" src="/dashboard.js"></script>
+  </body>
+</html>

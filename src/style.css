@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+#login-form.exit {
+  transform: translateX(-100%);
+}
+
+#student-counselor {
+  left: 100%;
+}
+
+#student-counselor.enter {
+  left: 0
+} */
+
+.content {
+  margin: 20px 0 10px;
+}
+.content p {
+  color: #333;
+  font-size: 1rem;
+}
+.content .requirement-list {
+  margin-top: 20px;
+}
+.requirement-list li {
+  font-size: 0.7rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.requirement-list li i {
+  width: 20px;
+  color: #aaa;
+  font-size: 0.6rem;
+}
+.requirement-list li.valid i {
+  font-size: 0.7rem;
+  color: #4285F4;
+}
+
+.requirement-list li:not(.valid) i {
+  font-size: 0.7rem;
+  color: #ff2f00;
+}
+
+.requirement-list li span {
+  margin-left: 12px;
+  color: #333;
+}
+.requirement-list li.valid span {
+  color: #999;
+}
+.error {
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+  color: #d93025;
+  font-size: 13px;
+  display: none;
+}
+.invalid .error {
+  display: flex;
+}
+.error .error-icon {
+  margin-right: 6px;
+  font-size: 15px;
+}
+.create-password .error {
+  align-items: flex-start;
+}
+.create-password .error-icon {
+  margin-top: 4px;
+}
+
+
+.content {
+  margin: 20px 0 10px;
+}
+.content p {
+  color: #333;
+  font-size: 1rem;
+}
+.content .requirement-list {
+  margin-top: 20px;
+}
+.requirement-list li {
+  font-size: 0.7rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.requirement-list li i {
+  width: 20px;
+  color: #aaa;
+  font-size: 0.6rem;
+}
+.requirement-list li.valid i {
+  font-size: 0.7rem;
+  color: #4285F4;
+}
+.requirement-list li span {
+  margin-left: 12px;
+  color: #333;
+}
+.requirement-list li.valid span {
+  color: #999;
+}
+
+
+
+.error {
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+  color: #d93025;
+  font-size: 13px;
+  display: none;
+}
+.invalid .error {
+  display: flex;
+}
+.error .error-icon {
+  margin-right: 6px;
+  font-size: 15px;
+}
+.create-password .error {
+  align-items: flex-start;
+}
+.create-password .error-icon {
+  margin-top: 4px;
+}
+

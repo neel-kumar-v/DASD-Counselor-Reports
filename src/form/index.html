@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script type="module" src="./form.js"></script>
+    <script type="module" src="./../../util.js"></script>
+  </head>
+  <body>
+    <h1 class="text-4xl pt-4 font-bold w-screen text-center">
+      Counselor Check In Form
+    </h1>
+    <!-- <p class=" text-neutral-300 w-screen text-center">Please complete this form when you arrive for your appointment.</p> -->
+    <form name="main" class="container mx-auto my-5 px-[5%]">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="relative z-0 w-full col-span-1">
+          <input
+            required
+            type="text"
+            name="firstName"
+            id="firstName"
+            class="transition-all block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-slate-600 peer"
+            placeholder=" "
+          />
+          <label
+            for="firstName"
+            class="absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-slate-600 peer-focus:dark:text-slate-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >First Name</label
+          >
+        </div>
+
+        <div class="relative z-0 w-full col-span-1">
+          <input
+            required
+            type="text"
+            name="lastName"
+            id="lastName"
+            class="transition-all block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-slate-600 peer"
+            placeholder=" "
+          />
+          <label
+            for="lastName"
+            class="absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-slate-600 peer-focus:dark:text-slate-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >Last Name</label
+          >
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="relative z-0 mt-4 col-span-1">
+          <input
+            required
+            type="email"
+            name="email"
+            id="email"
+            class="transition-all block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-slate-600 peer"
+            placeholder=" "
+          />
+          <label
+            for="email"
+            class="absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-slate-600 peer-focus:dark:text-slate-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >Email address</label
+          >
+        </div>
+        <div class="relative z-0 mt-4 col-span-1">
+          <label for="reason_for_meeting" class="sr-only"
+            >Reason for Meeting</label
+          >
+          <select
+            name="reason"
+            required
+            id="reason_for_meeting"
+            class="block py-2.5 rounded-none divide-y divide-solid px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-slate-200 appearance-none focus:outline-none focus:ring-0 focus:border-slate-600 peer"
+          >
+            <option
+              class="bg-slate-200 rounded-none hover:bg-slate-400"
+              value=""
+              selected
+            >
+              Choose a reason
+            </option>
+            <option
+              class="bg-slate-200 rounded-none hover:bg-slate-400"
+              value="Schedule Question/Concern"
+            >
+              Schedule Question/Concern
+            </option>
+            <option
+              class="bg-slate-200 rounded-none hover:bg-slate-400"
+              value="Personal or Mental Health Check In"
+            >
+              Personal or Mental Health Check In
+            </option>
+            <option
+              class="bg-slate-200 rounded-none hover:bg-slate-400"
+              value="I'm concerned about a friend"
+            >
+              I'm concerned about a friend
+            </option>
+            <option
+              class="bg-slate-200 rounded-none hover:bg-slate-400"
+              value="Organization/Time Management Help"
+            >
+              Organization/Time Management Help
+            </option>
+            <option
+              class="bg-slate-200 rounded-none hover:bg-slate-400"
+              value="College/Career"
+            >
+              College/Career
+            </option>
+            <option
+              class="bg-slate-200 rounded-none hover:bg-slate-400"
+              value="Yearly Meeting (Freshman, Sophomore, Junior, Senior Meeting)"
+            >
+              Yearly Meeting (Freshman, Sophomore, Junior, Senior Meeting)
+            </option>
+            <option
+              class="bg-slate-200 rounded-none hover:bg-slate-400"
+              value="IEP/504/Meeting with School Psychologist"
+            >
+              IEP/504/Meeting with School Psychologist
+            </option>
+            <option
+              class="bg-slate-200 rounded-none hover:bg-slate-400"
+              value="Class/Grade Concern"
+            >
+              Class/Grade Concern
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <h3 class="mb-5 mt-14 text-3xl font-medium text-gray-900">Grade</h3>
+      <ul class="grid w-full gap-6 sm:grid-cols-2 md:grid-cols-4">
+        <li>
+          <input
+            type="radio"
+            id="9"
+            name="grade"
+            value="9"
+            class="hidden peer/grade"
+            required
+          />
+          <label
+            for="9"
+            class="transition-all inline-flex items-center justify-between w-full p-5 text-slate-500 bg-white border border-slate-200 rounded-lg cursor-pointer peer-checked/grade:border-slate-600 peer-checked/grade:text-slate-600 hover:text-slate-600 hover:bg-slate-100"
+          >
+            <div class="block">
+              <div class="w-full text-lg font-semibold">9th</div>
+            </div>
+          </label>
+        </li>
+        <li>
+          <input
+            type="radio"
+            id="10"
+            name="grade"
+            value="10"
+            class="hidden peer/grade"
+            required
+          />
+          <label
+            for="10"
+            class="transition-all inline-flex items-center justify-between w-full p-5 text-slate-500 bg-white border border-slate-200 rounded-lg cursor-pointer peer-checked/grade:border-slate-600 peer-checked/grade:text-slate-600 hover:text-slate-600 hover:bg-slate-100"
+          >
+            <div class="block">
+              <div class="w-full text-lg font-semibold">10th</div>
+            </div>
+          </label>
+        </li>
+        <li>
+          <input
+            type="radio"
+            id="11"
+            name="grade"
+            value="11"
+            class="hidden peer/grade"
+            required
+          />
+          <label
+            for="11"
+            class="transition-all inline-flex items-center justify-between w-full p-5 text-slate-500 bg-white border border-slate-200 rounded-lg cursor-pointer peer-checked/grade:border-slate-600 peer-checked/grade:text-slate-600 hover:text-slate-600 hover:bg-slate-100"
+          >
+            <div class="block">
+              <div class="w-full text-lg font-semibold">11th</div>
+            </div>
+          </label>
+        </li>
+        <li>
+          <input
+            type="radio"
+            id="12"
+            name="grade"
+            value="12"
+            class="hidden peer/grade"
+            required
+          />
+          <label
+            for="12"
+            class="transition-all inline-flex items-center justify-between w-full p-5 text-slate-500 bg-white border border-slate-200 rounded-lg cursor-pointer peer-checked/grade:border-slate-600 peer-checked/grade:text-slate-600 hover:text-slate-600 hover:bg-slate-100"
+          >
+            <div class="block">
+              <div class="w-full text-lg font-semibold">12th</div>
+            </div>
+          </label>
+        </li>
+      </ul>
+      <h3 class="mb-5 mt-14 text-3xl font-medium text-gray-900">Counselor</h3>
+      <ul class="grid w-full gap-6 sm:grid-cols-2 md:grid-cols-4">
+        <li>
+          <input
+            type="radio"
+            id="stratton"
+            name="counselor"
+            value="stratton"
+            class="hidden peer/counselor"
+            required
+          />
+          <label
+            for="stratton"
+            class="transition-all inline-flex items-center justify-between w-full p-5 text-slate-500 bg-white border border-slate-200 rounded-lg cursor-pointer peer-checked/counselor:border-slate-600 peer-checked/counselor:text-slate-600 hover:text-slate-600 hover:bg-slate-100"
+          >
+            <div class="block">
+              <div class="w-full text-lg font-semibold">Mr. Stratton</div>
+              <div class="w-full">
+                9th Graders last names A-K and 10th-11th Graders last names D-K
+              </div>
+            </div>
+          </label>
+        </li>
+        <li>
+          <input
+            type="radio"
+            id="wallin"
+            name="counselor"
+            value="wallin"
+            class="hidden peer/counselor"
+            required
+          />
+          <label
+            for="wallin"
+            class="transition-all inline-flex items-center justify-between w-full p-5 text-slate-500 bg-white border border-slate-200 rounded-lg cursor-pointer peer-checked/counselor:border-slate-600 peer-checked/counselor:text-slate-600 hover:text-slate-600 hover:bg-slate-100"
+          >
+            <div class="block">
+              <div class="w-full text-lg font-semibold">Mrs. Wallin</div>
+              <div class="w-full">
+                10th-11th Graders last names A-C and 12th graders last name A-G
+              </div>
+            </div>
+          </label>
+        </li>
+        <li>
+          <input
+            type="radio"
+            id="hewitt"
+            name="counselor"
+            value="hewitt"
+            class="hidden peer/counselor"
+            required
+          />
+          <label
+            for="hewitt"
+            class="transition-all inline-flex items-center justify-between w-full p-5 text-slate-500 bg-white border border-slate-200 rounded-lg cursor-pointer peer-checked/counselor:border-slate-600 peer-checked/counselor:text-slate-600 hover:text-slate-600 hover:bg-slate-100"
+          >
+            <div class="block">
+              <div class="w-full text-lg font-semibold">Mrs. Hewitt</div>
+              <div class="w-full">
+                9th-11th Graders last names L-R and 12th Graders last names H-N
+              </div>
+            </div>
+          </label>
+        </li>
+        <li>
+          <input
+            type="radio"
+            id="glowik"
+            name="counselor"
+            value="glowik"
+            class="hidden peer/counselor"
+            required
+          />
+          <label
+            for="glowik"
+            class="transition-all inline-flex items-center justify-between w-full p-5 text-slate-500 bg-white border border-slate-200 rounded-lg cursor-pointer peer-checked/counselor:border-slate-600 peer-checked/counselor:text-slate-600 hover:text-slate-600 hover:bg-slate-100"
+          >
+            <div class="block">
+              <div class="w-full text-lg font-semibold">Mrs. Glowik</div>
+              <div class="w-full">
+                9th-11th Graders last names S-Z and 12th Graders last names O-Z
+              </div>
+            </div>
+          </label>
+        </li>
+      </ul>
+      <!-- submit button with arrow svg -->
+      <button
+        id="submit-button"
+        type="submit"
+        class="flex items-center justify-center w-full px-4 py-3 mt-10 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-slate-600 border border-transparent rounded-md hover:bg-slate-500 focus:outline-none focus:border-slate-700 focus:shadow-outline-indigo md:py-4 md:text-lg md:px-10"
+      >
+        <span>Submit</span>
+      </button>
+    </form>
+
+    <script type="module" src="./form.js"></script>
+    <script type="module" src="../components.js"></script>
+  </body>
+</html>

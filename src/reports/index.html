@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scheduler - Dashboard</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script type="module" src="./reports.js"></script>
+  </head>
+  <body class="bg-gray-100">
+    <navbar-component></navbar-component>
+    <!-- Stats at a glance -->
+    <div
+      class="grid container grid-cols-3 grid-rows-1 h-[25vh] mx-auto py-5 gap-x-4 transition-all mb-12"
+    >
+      <div
+        class="h-full w-full transition-all hover:drop-shadow-xl duration-500 outline-slate-200 rounded-lg outline-2 outline outline-solid hover:outline-0 bg-white flex place-items-center justify-center flex-col"
+      >
+        <h1 id="yearly-meetings" class="text-8xl font-bold">376</h1>
+        <h3 class="text-2xl font-semibold">meetings this year</h3>
+      </div>
+      <div
+        class="h-full w-full transition-all hover:drop-shadow-xl duration-500 outline-slate-200 rounded-lg outline-2 outline outline-solid hover:outline-0 bg-white flex place-items-center justify-center flex-col"
+      >
+        <h1 id="monthly-meetings" class="text-8xl font-bold">17</h1>
+        <h3 class="text-2xl font-semibold">meetings this month</h3>
+      </div>
+      <div
+        class="h-full w-full transition-all hover:drop-shadow-xl duration-500 outline-slate-200 rounded-lg outline-2 outline outline-solid hover:outline-0 bg-white flex place-items-center justify-center flex-col"
+      >
+        <h1 id="weekly-meetings" class="text-8xl font-bold">4</h1>
+        <h3 class="text-2xl font-semibold">meetings this week</h3>
+      </div>
+      <!-- Turn into graph, or if no time, then keep it as a card -->
+    </div>
+    <div class="container mx-auto h-fit bg-slate-200/50 rounded-lg">
+      <!-- ! Change height to fit after design -->
+      <!-- Search Filter function -->
+
+      <div class="w-full h-16 rounded-t-lg">
+        <form action="" class="px-4 py-3">
+          <div class="flex flex-row gap-x-8">
+            <div class="searchbox">
+              <input
+                type="text"
+                name="Student Name"
+                id="student-name"
+                placeholder="Student Name..."
+                class="flex justify-center items-center border-[2px] border-slate-100 transition-all bg-white hover:bg-slate-200 focus:bg-slate-200 pl-2 pr-4 py-1.5 rounded-lg placeholder::opacity-0"
+              />
+            </div>
+
+            <div class="flex flex-col">
+              <button
+                id="filterDropdownButton"
+                data-dropdown-toggle="filterDropdown"
+                class="flex items-center justify-center px-4 py-2 text-sm font-normal text-slate-900 bg-white border border-gray-200 rounded-lg w-auto hover:bg-slate-100 focus:z-10 h-10 shadow-sm transition-all"
+                type="button"
+              >
+                Counselor
+                <svg
+                  class="-mr-1 ml-1.5 w-5 h-5"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </button>
+
+              <!-- Dropdown menu -->
+              <div
+                id="filterDropdown"
+                class="z-10 hidden w-max p-3 bg-white rounded-lg shadow"
+              >
+                <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
+                  <li class="flex items-center">
+                    <input
+                      id="hewitt"
+                      type="checkbox"
+                      value=""
+                      class="w-4 h-4 rounded text-slate-900"
+                    />
+                    <label
+                      for="hewitt"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      Hewitt
+                    </label>
+                  </li>
+                  <li class="flex items-center">
+                    <input
+                      id="stratton"
+                      type="checkbox"
+                      value=""
+                      class="w-4 h-4 rounded text-slate-900"
+                    />
+                    <label
+                      for="stratton"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      Stratton
+                    </label>
+                  </li>
+                  <li class="flex items-center">
+                    <input
+                      id="wallin"
+                      type="checkbox"
+                      value=""
+                      class="w-4 h-4 rounded text-slate-900"
+                    />
+                    <label
+                      for="wallin"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      Wallin
+                    </label>
+                  </li>
+                  <li class="flex items-center">
+                    <input
+                      id="glowik"
+                      type="checkbox"
+                      value=""
+                      class="w-4 h-4 rounded text-slate-900"
+                    />
+                    <label
+                      for="glowik"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      Glowik
+                    </label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="flex flex-col w-32 -mr-12">
+              <button
+                id="filterDropdownButton4"
+                data-dropdown-toggle="filterDropdown"
+                class="flex items-center justify-center px-4 py-2 text-sm font-normal text-slate-900 bg-white border border-gray-200 rounded-lg w-max hover:bg-slate-100 focus:z-10 h-10 shadow-sm transition-all"
+                type="button"
+              >
+                Date
+                <svg
+                  class="-mr-1 ml-1.5 w-5 h-5"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </button>
+
+              <!-- Dropdown menu -->
+              <div
+                id="filterDropdown4"
+                class="z-10 hidden w-max p-3 bg-white rounded-lg shadow"
+              >
+                <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
+                  <li class="flex items-center">
+                    <input
+                      id="today"
+                      type="radio"
+                      value="today"
+                      class="w-4 h-4 rounded text-slate-900"
+                      name="date"
+                    />
+                    <label
+                      for="today"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      Today
+                    </label>
+                  </li>
+                  <li class="flex items-center">
+                    <input
+                      id="week"
+                      type="radio"
+                      value="week"
+                      class="w-4 h-4 rounded text-slate-900"
+                      name="date"
+                    />
+                    <label
+                      for="week"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      This Week
+                    </label>
+                  </li>
+                  <li class="flex items-center">
+                    <input
+                      id="month"
+                      type="radio"
+                      value="month"
+                      class="w-4 h-4 rounded text-slate-900"
+                      name="date"
+                    />
+                    <label
+                      for="Month"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      This Month
+                    </label>
+                  </li>
+                  <li class="flex items-center">
+                    <input
+                      id="year"
+                      type="radio"
+                      value="year"
+                      class="w-4 h-4 rounded text-slate-900"
+                      name="date"
+                    />
+                    <label
+                      for="Year"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      This School Year
+                    </label>
+                  </li>
+                  <li class="flex items-center">
+                    <input
+                      id="alltime"
+                      type="radio"
+                      value="alltime"
+                      class="w-4 h-4 rounded text-slate-900"
+                      name="date"
+                    />
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <button
+                id="filterDropdownButton3"
+                data-dropdown-toggle="filterDropdown"
+                class="flex items-center justify-center px-4 py-2 text-sm font-normal text-slate-900 bg-white border border-gray-200 rounded-lg w-auto hover:bg-slate-100 focus:z-10 h-10 shadow-sm transition-all"
+                type="button"
+              >
+                Grade
+                <svg
+                  class="-mr-1 ml-1.5 w-5 h-5"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </button>
+
+              <!-- Dropdown menu -->
+              <div
+                id="filterDropdown3"
+                class="z-10 hidden w-max p-3 bg-white rounded-lg shadow"
+              >
+                <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
+                  <li class="flex items-center">
+                    <input
+                      id="9"
+                      type="checkbox"
+                      value=""
+                      class="w-4 h-4 rounded text-slate-900"
+                    />
+                    <label
+                      for="9"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      9
+                    </label>
+                  </li>
+                  <li class="flex items-center">
+                    <input
+                      id="10"
+                      type="checkbox"
+                      value=""
+                      class="w-4 h-4 rounded text-slate-900"
+                    />
+                    <label
+                      for="10"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      10
+                    </label>
+                  </li>
+                  <li class="flex items-center">
+                    <input
+                      id="11"
+                      type="checkbox"
+                      value=""
+                      class="w-4 h-4 rounded text-slate-900"
+                    />
+                    <label
+                      for="11"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      11
+                    </label>
+                  </li>
+                  <li class="flex items-center">
+                    <input
+                      id="12"
+                      type="checkbox"
+                      value=""
+                      class="w-4 h-4 rounded text-slate-900"
+                    />
+                    <label
+                      for="12"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      12
+                    </label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- <label
+              for="start"
+              class="w-max p-2 bg-white text-slate-900 rounded-lg shadow hover:bg-slate-100 h-10"
+              >Start date:
+              <input
+                type="date"
+                id="start"
+                name="end-date"
+                value="2023-09-12"
+                min="2023-07-22"
+                class="bg-white hover:bg-slate-100"
+              />
+            </label>
+            <label
+              for="end-date"
+              class="w-max text-slate-900 p-2 bg-white rounded-lg shadow hover:bg-slate-100 h-10"
+              >End date:
+              <input
+                type="date"
+                id="end-date"
+                name="end-date"
+                value="2023-07-23"
+                min="2023-09-08"
+                class="bg-white hover:bg-slate-100"
+              />
+            </label> -->
+
+            <div class="flex flex-col w-52 -mr-12">
+              <button
+                id="filterDropdownButton2"
+                data-dropdown-toggle="filterDropdown2"
+                class="flex items-center justify-center px-4 py-2 text-sm font-normal text-slate-900 bg-white border border-gray-200 rounded-lg max-w-fit hover:bg-slate-100 focus:z-10 h-10 shadow-sm transition-all"
+                type="button"
+              >
+                Reason for Meeting
+                <svg
+                  class="-mr-1 ml-1.5 w-5 h-5"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </button>
+
+              <!-- Dropdown menu -->
+              <div
+                id="filterDropdown2"
+                class="z-10 hidden w-max p-3 bg-white rounded-lg shadow"
+              >
+                <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
+                  <li class="flex items-center">
+                    <input
+                      id="schedule"
+                      type="checkbox"
+                      value="Schedule Question/Concern"
+                      class="w-4 h-4 rounded text-slate-900"
+                    />
+                    <label
+                      for="schedule"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      Schedule Question/Concern
+                    </label>
+                  </li>
+                  <li class="flex items-center">
+                    <input
+                      id="mental"
+                      type="checkbox"
+                      value="Personal or Mental Health Check In"
+                      class="w-4 h-4 rounded text-slate-900"
+                    />
+                    <label
+                      for="personal"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      Personal or Mental Health Check In
+                    </label>
+                  </li>
+                  <li class="flex items-center">
+                    <input
+                      id="friend"
+                      type="checkbox"
+                      value="I'm concerned about a friend"
+                      class="w-4 h-4 rounded text-slate-900"
+                    />
+                    <label
+                      for="friend"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      I'm concerned about a friend
+                    </label>
+                  </li>
+                  <li class="flex items-center">
+                    <input
+                      id="organization"
+                      type="checkbox"
+                      value="Organization/Time Management Help"
+                      class="w-4 h-4 rounded text-slate-900"
+                    />
+                    <label
+                      for="organization"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      Organization/Time Management Help
+                    </label>
+                  </li>
+                  <li class="flex items-center">
+                    <input
+                      id="college"
+                      type="checkbox"
+                      value="College/Career"
+                      class="w-4 h-4 rounded text-slate-900"
+                    />
+                    <label
+                      for="college"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      College/Career
+                    </label>
+                  </li>
+                  <li class="flex items-center">
+                    <input
+                      id="yearly"
+                      type="checkbox"
+                      value="Yearly Meeting (Freshman, Sophomore, Junior, Senior
+                      Meeting)"
+                      class="w-4 h-4 rounded text-slate-900"
+                    />
+                    <label
+                      for="yearly"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      Yearly Meeting (Freshman, Sophomore, Junior, Senior
+                      Meeting)
+                    </label>
+                  </li>
+                  <li class="flex items-center">
+                    <input
+                      id="IEP/504"
+                      type="checkbox"
+                      value="IEP/504/Meeting with School Psychologist"
+                      class="w-4 h-4 rounded text-slate-900"
+                    />
+                    <label
+                      for="IEP/504"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      IEP/504/Meeting with School Psychologist
+                    </label>
+                  </li>
+                  <li class="flex items-center">
+                    <input
+                      id="class"
+                      type="checkbox"
+                      value="Class/Grade Concern"
+                      class="w-4 h-4 rounded text-slate-900"
+                    />
+                    <label
+                      for="class"
+                      class="ml-2 text-sm font-normal text-slate-800 select-none"
+                    >
+                      Class/Grade Concern
+                    </label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <button
+              id="filterButton"
+              data-dropdown-toggle="filterButton"
+              class="flex items-center justify-center px-4 py-2 text-sm font-normal text-slate-900 bg-white border border-gray-200 rounded-lg w-auto hover:bg-slate-100 focus:z-10 h-10 shadow-sm transition-all"
+              type="button"
+            >
+              Filter
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="-mr-1 ml-1.5 h-full aspect-square stroke-white fill-black"
+              >
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <hr class="mx-12 h-0.5 border-t-0 opacity-100" />
+
+      <div class="relative overflow-x-auto">
+        <table
+          class="w-full text-sm text-center text-gray-500"
+          id="table-student-entries"
+        >
+          <thead class="text-xs text-gray-700 uppercase">
+            <tr>
+              <th scope="col" class="px-6 py-3">First Name</th>
+              <th scope="col" class="px-6 py-3">Last Name</th>
+              <th scope="col" class="px-6 py-3">Counselor</th>
+              <th scope="col" class="px-6 py-3">Grade</th>
+              <th scope="col" class="px-6 py-3">Date</th>
+              <th scope="col" class="px-6 py-3">Reason</th>
+            </tr>
+          </thead>
+          <tbody id="student-entries">
+            <template id="student-entry">
+              <tr class="odd:bg-white even:bg-gray-50 border-b">
+                <td class="px-6 py-4 text-gray-500 font-normal group">
+                  <a
+                    href="https://mail.google.com/mail/?view=cm&to=24nkumar@student.dasd.org"
+                    class="group-hover:underline"
+                    target="_blank"
+                    >Neel</a
+                  >
+                </td>
+                <td class="px-6 py-4 group">
+                  <a
+                    href="https://mail.google.com/mail/?view=cm&to=24nkumar@student.dasd.org"
+                    class="group-hover:underline"
+                    target="_blank"
+                    >Kumar</a
+                  >
+                </td>
+                <td class="px-6 py-4">Hewitt</td>
+                <td class="px-6 py-4">11</td>
+                <td class="px-6 py-4">09/23/23</td>
+                <td class="px-6 py-4">I'm concerned about a friend</td>
+              </tr>
+            </template>
+            <tr class="odd:bg-white even:bg-gray-50 border-b">
+              <td class="px-6 py-4 text-gray-500 font-normal group">
+                <a
+                  href="https://mail.google.com/mail/?view=cm&to=24nkumar@student.dasd.org"
+                  class="group-hover:underline"
+                  target="_blank"
+                  >Neel</a
+                >
+              </td>
+              <td class="px-6 py-4 group">
+                <a
+                  href="https://mail.google.com/mail/?view=cm&to=24nkumar@student.dasd.org"
+                  class="group-hover:underline"
+                  target="_blank"
+                  >Kumar</a
+                >
+              </td>
+              <td class="px-6 py-4">Hewitt</td>
+              <td class="px-6 py-4">11</td>
+              <td class="px-6 py-4">09/23/23</td>
+              <td class="px-6 py-4">I'm concerned about a friend</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Table -->
+    </div>
+
+    <script type="module" src="../components.js"></script>
+    <script type="module" src="../main.js"></script>
+    <script type="module" src="../firebase.js"></script>
+    <!-- <script src="https://code.highcharts.com/highcharts.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/stock.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/maps/modules/map.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/gantt.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/parallel-coordinates.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/annotations-advanced.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/data.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/draggable-points.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/static-scale.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/broken-axis.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/heatmap.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/tilemap.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/timeline.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/treemap.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/treegraph.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/item-series.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/histogram-bellcurve.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/bullet.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/funnel.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/networkgraph.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/pareto.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/pattern-fill.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/price-indicator.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/sankey.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/arc-diagram.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/dependency-wheel.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/solid-gauge.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/sonification.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/stock-tools.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/streamgraph.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/sunburst.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/variable-pie.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/variwide.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/vector.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/venn.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/windbarb.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/wordcloud.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/xrange.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/no-data-to-display.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/drag-panes.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/debugger.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/dumbbell.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/lollipop.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/organization.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/dotplot.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/marker-clusters.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/hollowcandlestick.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/modules/heikinashi.js" type="text/javascript"></script> -->
+  </body>
+</html>

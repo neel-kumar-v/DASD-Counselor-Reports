@@ -1,2 +1,3 @@
-# DASD-Counselor-Reports
- A backend admin dashboard page for counselors to view the 
+# DASD-Scheduler
+
+A simple app to help the Downingtown STEM Academy Counseling Office manage scheduling.
