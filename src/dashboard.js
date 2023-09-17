@@ -32,6 +32,8 @@ window.onload = async function () {
   let q = query(collection(db, "checkin"), where("active", "==", true));
   let querySnapshot = await getDocs(q);
 
+  
+
   querySnapshot.forEach((docItem) => {
     try {
       verifyDoc(docItem);
@@ -50,22 +52,25 @@ window.onload = async function () {
           docItem.data().date
         );
 
-        cloneDOM
-          .querySelector("#deleteButton")
-          .addEventListener("click", async function (event) {
-            parent = event.parentNode;
-            console.log(parent);
-            const delDocRef = doc(db, "checkin", cloneDOM.id);
-            await setDoc(delDocRef, { active: false }, { merge: true });
-            location.reload()
-          });
-
         const containers = document.querySelectorAll(
           ".col-span-1.flex.flex-col"
         );
+
+        
         containers.forEach((container) => {
-          if (container.id !== docItem.data().counselor) return;
-          container.insertBefore(cloneDOM, container.lastElementChild);
+          console.log(container.id, docItem.data().counselor, container.id !== docItem.data().counselor);
+          if (container.id !== docItem.data().counselor) {
+            const placeholderClone = template.content.cloneNode(true);
+            const placeholderDOM =
+              placeholderClone.querySelector(".person-card");
+            placeholderDOM.querySelector("#person-name").textContent =
+              "No one currently checked in";
+            placeholderDOM.querySelector("p").innerHTML = "<br/>";
+            container.appendChild(placeholderClone);
+            console.log(container);
+          } else {
+            container.appendChild(clone);
+          }
         });
       }
     }

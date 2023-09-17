@@ -40,6 +40,8 @@ function formatTime(date) {
         meridian = 'AM';
     }
 
+    formattedHours = formattedHours == 0 ? 12 : formattedHours;
+
     return `${formattedHours}:${formattedMinutes} ${meridian}`;
 }
 function capitalizeFirstLetter(str) {
