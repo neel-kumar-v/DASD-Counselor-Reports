@@ -21,7 +21,7 @@ class Navbar extends HTMLElement {
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
           </svg>
         </li>
-        <li><a class="text-sm text-slate-400 hover:text-slate-500 hover:font-bold" href="/login/">Reports</a></li>
+        <li><a class="text-sm text-slate-400 hover:text-slate-500 hover:font-bold" href="/form/">Schedule</a></li>
 
     </nav>
     `;

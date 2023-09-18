@@ -41,9 +41,13 @@ document.getElementById("submit-button").onclick = async function handleSubmit(
   const lastName = document.querySelector(
     "form[name='main'] input[name='lastName']"
   ).value;
-  const email = document.querySelector(
-    "form[name='main'] input[name='email']"
-  ).value;
+  const email =
+    document.querySelector("form[name='main'] input[name='email']").value +
+    "@student.dasd.org";
+  if (email.includes("@student.dasd.org@student.dasd.org")) {
+    // split the string at the second @
+    email = email.split("@")[0] + "@student.dasd.org";
+  }
   const reason = document.querySelector(
     "form[name='main'] select[name='reason']"
   ).value;
@@ -61,14 +65,13 @@ document.getElementById("submit-button").onclick = async function handleSubmit(
     reason: reason,
     grade: grade,
     counselor: counselor,
-    date: date,
-    active: true,
+    isScheduled: false
   };
 
   console.log(firebaseData);
 
   try {
-    docRef = await addDoc(collection(db, "checkin"), firebaseData);
+    docRef = await addDoc(collection(db, "mscheduled"), firebaseData);
     history.back();
   } catch {
     console.error("Document add threw error:", e);
