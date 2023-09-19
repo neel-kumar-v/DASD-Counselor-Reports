@@ -10,6 +10,7 @@ window.onload = function () {
   // getQueryVariable('counselor')
   //create a tailwind h1 with the var
   counselor = getQueryVariable("counselor");
+  if (!counselor) return;
   const radio = document.querySelector(
     `input[type="radio"][name="counselor"][value=${counselor}]`
   );
@@ -41,7 +42,7 @@ document.getElementById("submit-button").onclick = async function handleSubmit(
   const lastName = document.querySelector(
     "form[name='main'] input[name='lastName']"
   ).value;
-  const email =
+  let email =
     document.querySelector("form[name='main'] input[name='email']").value +
     "@student.dasd.org";
   if (email.includes("@student.dasd.org@student.dasd.org")) {
@@ -65,7 +66,7 @@ document.getElementById("submit-button").onclick = async function handleSubmit(
     reason: reason,
     grade: grade,
     counselor: counselor,
-    isScheduled: false
+    isScheduled: false,
   };
 
   console.log(firebaseData);
