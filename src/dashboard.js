@@ -57,21 +57,21 @@ window.onload = async function () {
         );
 
         
-        containers.forEach((container) => {
-          console.log(container.id, docItem.data().counselor, container.id !== docItem.data().counselor);
-          if (container.id !== docItem.data().counselor) {
-            const placeholderClone = template.content.cloneNode(true);
-            const placeholderDOM =
-              placeholderClone.querySelector(".person-card");
-            placeholderDOM.querySelector("#person-name").textContent =
-              "No one currently checked in";
-            placeholderDOM.querySelector("p").innerHTML = "<br/>";
-            container.appendChild(placeholderClone);
-            console.log(container);
-          } else {
-            container.appendChild(clone);
-          }
-        });
+        // containers.forEach((container) => {
+        //   console.log(container.id, docItem.data().counselor, container.id !== docItem.data().counselor);
+        //   if (container.id !== docItem.data().counselor) {
+        //     const placeholderClone = template.content.cloneNode(true);
+        //     const placeholderDOM =
+        //       placeholderClone.querySelector(".person-card");
+        //     placeholderDOM.querySelector("#person-name").textContent =
+        //       "No one currently checked in";
+        //     placeholderDOM.querySelector("p").innerHTML = "<br/>";
+        //     container.appendChild(placeholderClone);
+        //     console.log(container);
+        //   } else {
+        //     container.appendChild(clone);
+        //   }
+        // });
       }
     }
   });
