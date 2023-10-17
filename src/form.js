@@ -1,6 +1,6 @@
-import { getQueryVariable, setQueryVariable } from "../util";
+import { getQueryVariable, setQueryVariable } from "./util";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
-import { db } from "../firebase.js";
+import { db } from "./firebase.js";
 
 let counselor;
 let docRef;
@@ -29,9 +29,9 @@ const firebaseTemplate = {
 };
 
 document.getElementById("submit-button").onclick = async function handleSubmit(
-  event
+  e
 ) {
-  event.preventDefault();
+  e.preventDefault();
   console.log("hello");
   //get all the query params
   const date = Date.now();
@@ -71,8 +71,11 @@ document.getElementById("submit-button").onclick = async function handleSubmit(
 
   console.log(firebaseData);
 
+  const successFeedback = document.getElementById("success-container");
+
   try {
     docRef = await addDoc(collection(db, "mscheduled"), firebaseData);
+    successFeedback.classList.remove("hidden");
     history.back();
   } catch {
     console.error("Document add threw error:", e);

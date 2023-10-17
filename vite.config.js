@@ -27,7 +27,6 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'src/index.html'),
         form: resolve(__dirname, 'src/form/index.html'),
-        login: resolve(__dirname, 'src/login/index.html'),
       },
       output: {
         assetFileNames: (assetInfo) => {
